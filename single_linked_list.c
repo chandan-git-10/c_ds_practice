@@ -101,13 +101,34 @@ int find_mid()
         return slow->data;
     }
 }
+void find_loop()
+{
+    struct node *fast=head,*slow=head;
+    if(head==NULL)
+    {
+        printf("linked list is empty\n");
+    }
+    else
+    {
+        while(fast!=NULL && slow!=NULL)
+        {
+            fast=fast->next->next;
+            slow=slow->next;
+            if(slow->data == fast->data)
+            {
+                printf("single linked list have the loop\n");
+            }
+        }
+    }
+}
+
 int main() {
     int data,choice;
     struct node *temp,*np=NULL;
     while(1)
     {
 
-        printf("1.add_beg 2.add_end 3.display 4.rev 5.find_mid 6.exit\n");
+        printf("1.add_beg 2.add_end 3.display 4.rev 5.find_mid 6.find_loop 7.exit\n");
         printf("enter the choice\n");
         scanf("%d",&choice);
         switch(choice)
@@ -127,7 +148,9 @@ int main() {
             case 5: data=find_mid();
                     printf("middle node: data:%d\n",data);
                     break;
-            case 6: exit(0);
+            case 6: find_loop();
+                    break;
+            case 7: exit(0);
             
             default: printf("entered choice is invalid\n");
         }
