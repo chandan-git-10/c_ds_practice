@@ -1,5 +1,5 @@
-//Data Structures : single linked list 
-
+/*DS : single linked list 
+============================ */
 #include <stdio.h>
 #include<stdlib.h>
 
@@ -58,9 +58,10 @@ void display()
     {
     while(temp)
     {
-    printf("%d\n",temp->data);
+    printf("%d ",temp->data);
     temp=temp->next;
     }
+    printf("\n");
     }
 }
 void rev()
@@ -82,13 +83,31 @@ void rev()
         head=prev;
     }
 }
+
+int find_mid()
+{
+    struct node *fast=head,*slow=head;
+    if(head==NULL)
+    {
+        printf("Linked list is empty\n");
+    }
+    else
+    {
+        while(fast !=NULL && fast->next != NULL)
+        {
+            fast=fast->next->next;
+            slow=slow->next;
+        }
+        return slow->data;
+    }
+}
 int main() {
     int data,choice;
     struct node *temp,*np=NULL;
     while(1)
     {
 
-        printf("1.add_beg 2.add_end 3.display 4.rev 5.exit\n");
+        printf("1.add_beg 2.add_end 3.display 4.rev 5.find_mid 6.exit\n");
         printf("enter the choice\n");
         scanf("%d",&choice);
         switch(choice)
@@ -105,7 +124,10 @@ int main() {
                     break;
             case 4: rev();
                     break;
-            case 5: exit(0);
+            case 5: data=find_mid();
+                    printf("middle node: data:%d\n",data);
+                    break;
+            case 6: exit(0);
             
             default: printf("entered choice is invalid\n");
         }
