@@ -5,11 +5,6 @@
 char *my_strcpy(char *dst, char *src)
 {
     int i;
-   /* int i,len;
-    for(i=0;str1[i];i++)
-    {
-     len++;   
-    }*/
     for(i=0;src[i];i++)
     {
         dst[i] = src[i];
