@@ -3,7 +3,7 @@
 // Online C compiler to run C program online
 #include <stdio.h>
 
-char *my_strcpy(char *dst, char *src,int n)
+char *my_strncpy(char *dst, char *src,int n)
 {
     int i;
     for(i=0;i<n;i++)
@@ -24,7 +24,7 @@ int main() {
     gets(str2);
     printf("enter the no of char to be copied:");
     scanf("%d",&n);
-    ptr=my_strcpy(str1,str2,n);
+    ptr=my_strncpy(str1,str2,n);
     printf("%s", str1);
     return 0;
 }
