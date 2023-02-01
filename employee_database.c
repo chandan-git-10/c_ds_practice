@@ -37,7 +37,7 @@ void view_employee_info(char *name)
 	EMPI *temp=head;
 	while(temp!=NULL)
 	{
-		if(temp->name == *name)
+		if(strcmp(temp->name,name))
 		{
 			printf("name:%s pos:%s manager:%s doj:%s dob:%s collage:%s place:%s language:%s",temp->name,temp->pos,temp->manager,temp->basic.dob,temp->basic.collage,temp->basic.place,temp->basic.languages);
 			
