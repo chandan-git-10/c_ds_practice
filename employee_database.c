@@ -1,3 +1,11 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+  GDB online is an online compiler and debugger tool for C, C++, Python, PHP, Ruby, 
+  C#, OCaml, VB, Perl, Swift, Prolog, Javascript, Pascal, COBOL, HTML, CSS, JS
+  Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
 // Employee database application.
 
 /*
@@ -30,6 +38,8 @@ typedef struct employee_info
 
 EMPI *head=NULL;
 
+//void edit_employee_info(void);
+//void remove_employee_info(void);
 
 void view_employee_info(char *name)
 {
@@ -90,10 +100,8 @@ void add_employee_info()
 	}
 }
 
-void edit_employee_info(void);
-void remove_employee_info(void);
 
-int main()
+int  main()
 {
 	int choice;
 	char *name=NULL;
@@ -108,11 +116,13 @@ int main()
 				fgets(name,10,stdin);
 				view_employee_info (name);
 				break;
-		case 2: edit_employee_info();
+		case 2: //edit_employee_info(); 
+		        printf("edit_employee_info() API still under development\n");
 				break;
 		case 3: add_employee_info();
 				break;
-		case 4: remove_employee_info();
+		case 4: //remove_employee_info();
+		        printf("remove_employee_info() API is still under development\n");
 				break;
 		case 5: exit(0);
 		default: printf("Please enter valid choice\n");
