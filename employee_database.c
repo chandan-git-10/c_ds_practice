@@ -39,7 +39,7 @@ void view_employee_info(char *name)
 	{
 		if(strcmp(temp->name,name))
 		{
-			printf("name:%s pos:%s manager:%s doj:%s dob:%s collage:%s place:%s language:%s",temp->name,temp->pos,temp->manager,temp->basic.dob,temp->basic.collage,temp->basic.place,temp->basic.languages);
+			printf("name:%s pos:%s manager:%s doj:%s dob:%s collage:%s place:%s language:%s",temp->name,temp->pos,temp->manager,temp->doj,temp->basic.dob,temp->basic.collage,temp->basic.place,temp->basic.languages);
 			
 		}
 		else
@@ -47,7 +47,7 @@ void view_employee_info(char *name)
 			p=strstr(temp->name,name);
 			if(p!=NULL)
 			{	
-			printf("name:%s pos:%s manager:%s doj:%s dob:%s collage:%s place:%s language:%s",temp->name,temp->pos,temp->manager,temp->basic.dob,temp->basic.collage,temp->basic.place,temp->basic.languages);
+			printf("name:%s pos:%s manager:%s doj:%s dob:%s collage:%s place:%s language:%s",temp->name,temp->pos,temp->manager,temp->doj,temp->basic.dob,temp->basic.collage,temp->basic.place,temp->basic.languages);
 			}
 			else
 			{
@@ -72,21 +72,21 @@ void add_employee_info()
 	{
 	printf("please enter the employee infos as follow:\n");
 	printf("name:");
-	gets(temp->name);
+	fgets(temp->name,10,stdin);
 	printf("pos");
-	gets(temp->pos);
+	fgets(temp->pos,10,stdin);
 	printf("manager:");
-	gets(temp->manager);
+	fgets(temp->manager,10,stdin);
 	printf("doj:");
-	gets(temp->doj);
+	fgets(temp->doj,10,stdin);
 	printf("dob:");
-	gets(temp->basic.dob);
+	fgets(temp->basic.dob,10,stdin);
 	printf("collage:");
-	gets(temp->basic.collage);
+	fgets(temp->basic.collage,10,stdin);
 	printf("place:");
-	gets(temp->basic.place);
+	fgets(temp->basic.place,10,stdin);
 	printf("languages");
-	gets(temp->basic.languages);
+	fgets(temp->basic.languages,10,stdin);
 	}
 }
 
@@ -105,7 +105,7 @@ void main()
 	switch(choice)
 	{
 		case 1: printf("Please enter the emp name to be found\n");
-				gets(name);
+				fgets(name,10,stdin);
 				view_employee_info (name);
 				break;
 		case 2: edit_employee_info();
