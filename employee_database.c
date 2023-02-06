@@ -34,39 +34,56 @@ EMPI *head=NULL;
 //void edit_employee_info(void);
 //void remove_employee_info(void);
 
-void view_employee_info(char *name)
+void view_employee_info()
 {
-	char *p=NULL;
+    char name[20];
+    printf("Please enter the emp name to be found\n");
+	scanf("%s",name);
+	char flag=0,*p=NULL;
 	EMPI *temp=head;
+	if(head == NULL)
+	{
+		printf("Database is empty, Please add the entries\n");
+	}
+	else
+	{
 	while(temp!=NULL)
 	{
-		if(strcmp(temp->name,name))
+		if(strcmp(temp->name,name) == 0)
 		{
-			printf("name:%s pos:%s manager:%s doj:%s dob:%s collage:%s place:%s language:%s",temp->name,temp->pos,temp->manager,temp->doj,temp->basic.dob,temp->basic.collage,temp->basic.place,temp->basic.languages);
-			
+			printf("name:%s\n pos:%s\n manager:%s\n doj:%s\n dob:%s\n collage:%s\n place:%s\n language:%s\n",temp->name,temp->pos,temp->manager,temp->doj,temp->basic.dob,temp->basic.collage,temp->basic.place,temp->basic.languages);
+			flag = 1;
+			break;
 		}
-		else
-		{
-			p=strstr(temp->name,name);
-			if(p!=NULL)
+		
+		
+		/*else if(p=strstr(temp->name,name))
 			{	
-			printf("name:%s pos:%s manager:%s doj:%s dob:%s collage:%s place:%s language:%s",temp->name,temp->pos,temp->manager,temp->doj,temp->basic.dob,temp->basic.collage,temp->basic.place,temp->basic.languages);
+			printf("name:%s\n pos:%s\n manager:%s\n doj:%s\n dob:%s\n collage:%s\n place:%s\n language:%s\n",temp->name,temp->pos,temp->manager,temp->doj,temp->basic.dob,temp->basic.collage,temp->basic.place,temp->basic.languages);
+			break;
 			}
 			else
 			{
 				printf("Employee info is not found\n");
-			}
-		}
+				break;
+			}*/
+		else
+		temp=temp->next;
 	}
-
+	if(flag == 0)
+	{
+	    printf("Employee info is not found\n");
+	}
+	}
+	
 }
 
 
 void add_employee_info()
 {
-	EMPI *temp=NULL;
-	temp=(EMPI *)malloc(1*sizeof(EMPI));
-	if(temp==NULL)
+	EMPI *node=NULL, *temp=NULL;
+	node=(EMPI *)malloc(1*sizeof(EMPI));
+	if(node==NULL)
 	{
 		printf("Memory is not allocated for the node\n");
 		exit(0);
@@ -75,21 +92,40 @@ void add_employee_info()
 	{
 	printf("please enter the employee infos as follow:\n");
 	printf("name:");
-	fgets(temp->name,10,stdin);
-	printf("pos");
-	fgets(temp->pos,10,stdin);
+	scanf("%s",node->name);
+	printf("pos:");
+	scanf("%s",node->pos);
 	printf("manager:");
-	fgets(temp->manager,10,stdin);
+	scanf("%s",node->manager);
 	printf("doj:");
-	fgets(temp->doj,10,stdin);
+	scanf("%s",node->doj);
 	printf("dob:");
-	fgets(temp->basic.dob,10,stdin);
+	scanf("%s",node->basic.dob);
 	printf("collage:");
-	fgets(temp->basic.collage,10,stdin);
+	scanf("%s",node->basic.collage);
 	printf("place:");
-	fgets(temp->basic.place,10,stdin);
-	printf("languages");
-	fgets(temp->basic.languages,10,stdin);
+	scanf("%s",node->basic.place);
+	printf("languages:");
+	scanf("%s",node->basic.languages);
+	}
+	//NULL is not being added by user so adding it here.
+	node->next=NULL;
+	//checking if the head is NULL (adding first entry).
+	if(head == NULL)
+	{
+	    head=node;
+	    head->next=NULL;
+	}
+	// adding new entry in the list.
+	else 
+	{
+		temp=head;
+	    while(temp->next != NULL)
+	    {
+	        temp=temp->next;
+	        
+	    }
+	    temp->next=node;
 	}
 }
 
@@ -105,9 +141,7 @@ int  main()
 	scanf("%d",&choice);
 	switch(choice)
 	{
-		case 1: printf("Please enter the emp name to be found\n");
-				fgets(name,10,stdin);
-				view_employee_info (name);
+		case 1: view_employee_info(name);
 				break;
 		case 2: //edit_employee_info(); 
 		        printf("edit_employee_info() API still under development\n");
