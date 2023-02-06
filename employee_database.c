@@ -93,7 +93,7 @@ void add_employee_info()
 void edit_employee_info(void);
 void remove_employee_info(void);
 
-void main()
+int main()
 {
 	int choice;
 	char *name=NULL;
@@ -119,5 +119,5 @@ void main()
 		
 	}
 	}
-	
+	return 0;
 }
