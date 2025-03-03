@@ -1,0 +1,46 @@
+#include <stdio.h>
+#define CLEAR(data,pos) data&(~(1<<pos))
+#define SET(data,pos) data|(1<<pos)
+#define CHECK(data,pos) (data>>pos)&1
+#define TOGGLE(data,pos) data^(1<<pos)
+int main() {
+    // Write C code here
+    int i=0,data=32,pos=5;
+    printf("present data\n");
+    for(i=31;i>0;i--)
+    {
+        printf("%d",(data>>i)&1);
+    }
+    printf("\nclearing\n");
+    printf("\n%d\n",CLEAR(data,pos));
+    for(i=31;i>0;i--)
+    {
+        printf("%d",(data>>i)&1);
+    }
+    printf("\nchecking\n");
+    printf("\n%d\n",CHECK(data,pos));
+    for(i=31;i>0;i--)
+    {
+        printf("%d",(data>>i)&1);
+    }
+    printf("\nSetting\n");
+    printf("\n%d\n",SET(data,pos));
+    for(i=31;i>0;i--)
+    {
+        printf("%d",(data>>i)&1);
+    }
+    printf("\nchecking\n");
+    printf("\n%d\n",CHECK(data,pos));
+    for(i=31;i>0;i--)
+    {
+        printf("%d",(data>>i)&1);
+    }
+    printf("\nToggeling\n");
+    printf("\n%d\n",TOGGLE(data,pos));
+    for(i=31;i>0;i--)
+    {
+        printf("%d",(data>>i)&1);
+    }
+    
+    
+}
